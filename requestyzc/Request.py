@@ -71,7 +71,7 @@ def gxrb_yds_test():
     with open('njrb.txt','ab+') as f:
         #new_text = '+'.join([datatext['result']['thirdAppAccount'],datatext['result']['thirdAppAccountPass']])
         new_text = '\nAPP账号：%s\nAPP密码：%s\nid：%s\nsim卡id：%s\n时间戳：\n'%(datatext['result']['thirdAppAccount'],datatext['result']['thirdAppAccountPass'],datatext['result']['thirdAccountImeiNo'],datatext['result']['thirdAccountSimNo'])
-        print(type(new_text))
+        print(datatext['result']['thirdAppAccount'])
         f.write(bytes(new_text,'UTF-8'))
 gxrb_yds_test()
 
