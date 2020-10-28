@@ -170,3 +170,72 @@ def tap_creat_order():
     r=requests.post(url = request,data=(tpa_create_data),headers= newReport_headers)
     print(r.text)
 #tap_creat_order()
+
+claim_tenant = '5f59e971af7fa46ce33835ca'
+claim_orgAccount ='5f963cf2af7fa46ce3383721'
+claim_agent = '5f9914d809991312aac2ecbf'
+claim_flowId = 'GD20201028145357326563'
+test_tenant='5f4608236149d00007838439'
+test_orgAccount = '5f471348aca231000774e39d'
+test_agent = '5f603327189555000601de3b'
+test_flowId = 'GD20201012105746656215'
+A=[claim_tenant,claim_orgAccount,claim_agent,claim_flowId]
+A=[test_tenant,test_orgAccount,test_agent,test_flowId]
+data = '''{
+"tenant":"%s",
+"orgAccount":"%s",
+"onlyForEncode": true,
+"encodeData": {
+"agent":"%s",
+"flowId":"%s",
+"type": 6,
+"data": {
+"surveyConclude":"1111查勘意见测试测试测试测试测试测试测试田林路200号，俩车碰撞，收集四面",
+"signer":"qzrsf",
+"place":"000出险地点测试测试测试测试测试测试测试田林路200号，俩车碰撞，收集四面",
+"reportId":"12345666666",
+"accidentDate":"2020-09-15",
+"accidentTime":"03:09:00",
+"reporterCellPhone":"15610190001",
+"cellPhone":"18312341234",
+"accidentResponse":"2",
+"insuredName":"测试与",
+"carOwner":"驾驶员人于",
+"riskSummary":"测试测试测试测试测试测试测试田林路200号，俩车碰撞，收集四面",
+"carNumber":"123456",
+"frameNo":"vin02",
+"ctpPolicyNo":"jqxbdh02",
+"comPolicyNo":"syxbdh02",
+"encodeEnv":"prod",
+"damageReason":"事故原因测试测试测试测试测试测试测试田林路200号，俩车碰撞，收集四面"
+}
+}
+}'''%(A[0],A[1],A[2],A[3])
+
+old_url = 'https://developer.ikandy.cn:63222/api/external/report/update'
+new_url = 'https://claim.cloud-ins.cn/api/external/report/update'
+def tap_update():
+  request = old_url
+  Content_Type =  'application/json' #; charset=utf-8'
+  newReport_headers={'Content-Type':Content_Type}#,"user-agent":User_Agent}
+  datae = data.encode(encoding='UTF8')
+  r=requests.post(url = request,data=datae,headers= newReport_headers,verify=False)
+  print(r.text)
+#tap_update()
+
+date_tap = '''
+{
+"tenant":"5f4608236149d00007838439",
+"orgAccount":"5f471348aca231000774e39d",
+"encodeData":"6d7d8f478493a47c704b91c2ac376dec1f66a06b3b18f37519fb65c76d3e245408ca86108559bd02e9459e76da7191189b08b4e638307632a7e9d6f729ff3b728f727df1c7880c4f31cf1a06c3605142dbce015c441930e5bc7e41f00c7426bbb9e4c5e7a27117158625041005a3ec54990022b82ba924a440ae4ea3d586aedde9d556528feaf52a82b7703ccedd759a91e905c26137172fd08a5c3f2badef01491cae0f13ab8eb7de4cba512e377310c6a0a2ab991ca13da900e6fa7c56d9908baaa256e3a4bff9f06a230d31fbbda4e9e52253573b477c82b7b112af7e46bb7878df9eab40e4e9087e29459a8ef6457bb80866ce0b8e303157e155e0ebdd78d5f0d84bb16413019f791673168e9184836dde4dcf391ecab683143dc4021e5b8a8187d2ecb39814a2f93a15659770ff3f4c4e27db8a5e767832a4a12179be45d3a16b134f9393a7cb44bf3ab5cfdb0ad9293e3dc22a551184f74a318851840edae7d62f4f2a274876352e2df849978947038cc66357658fef9c06e2767061eb68a3d48b41d3ef44e248e2a1afe1e13286f1b71d494169912c7784e2df210ccfe62b0af182be24cd39a5d0e8cedab9de58b2810579b610fc0bfb71a528372056e43c1d716bf1056fdd3200b16d674e47bdbd85c49d322a79be5c28ca4b9ecf73fdbd6164aa47f72dfb10049e6ca36b8f199bcb9f40b22a00b41556a4fce63be1f2eca5730227601fe54568679ed41e32e21d60f30bf364a256ed4a7a6d548c741b152d321ce6708b71644e20f0c571d619b64d1ae87dfc21a3d45ee56505cc1318f6dbc3bcb4ffe781db77f25e076a6615eff64890b4bff882115197a8225e13ae686426a3b892e10dda2ef706e5cdeed58c51f16f69bc6592b5139d007e9597040df1416738026c0d54e8c8f449e6ce3c79ad49eee98aad94ae995b180ea53dc328c93211154e5ed20890de8c2f47b65f01cde6b15f468bdaca0bb9f03535aff1672ca4c07e42f0b875cb582d412c19db9971d5b810b932bec6297178ab519fe7b1bc454531cd261d8018cb6d664a70d9ed89a0b3affc839dfa876a4aed6ed41a40c83a714f0279a6a4595f0eba4743c70e49a93a4a21b96bffa6e1d5840132d0e37db65faf60b8f8fc1c49796194c520b72d312be5765f18fb7b892aea43f6c8f94af42c51d5e4c09b58796df7abbf4f9ea7b8b71a69fed664caaff3e087d616cd6db8f90e16377ef7b78326f3e8ec85405cef87e8e3556afb898c0847d832"
+}
+'''
+
+def tap_update_new():
+  request = 'https://dzh-tx-test.ikandy.cn/api/external/report/update'
+  Content_Type =  'application/json' #; charset=utf-8'
+  newReport_headers={'Content-Type':Content_Type}#,"user-agent":User_Agent}
+  #datae = data.encode(encoding='UTF8')
+  r=requests.post(url = request,data=date_tap,headers= newReport_headers)
+  print(r.text)
+tap_update_new()
