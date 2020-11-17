@@ -1,0 +1,392 @@
+{
+	"id": "5fb37df8b11a8c0007aeb0db",
+	"state": "holdedOn",
+	"stateTrack": [{
+		"state": "holdedOn",
+		"subState": "noSubmit",
+		"detail": "资料收集/未提交",
+		"time": "2020-11-17T07:38:32.518Z",
+		"_id": "5fb37df8b11a8c0007aeb0dc"
+	}],
+	"defLossTaskStateTrack": [],
+	"videoCaptures": [],
+	"otherCarLoss": [],
+	"signPic": [],
+	"shotPics": [],
+	"lossAssOptionData": [],
+	"electPicUpload": false,
+	"directPayOther": "0",
+	"accidentType": {
+		"secondTypeArr": ["HORSEMAN_INJURY"],
+		"secondType": "HORSEMAN_INJURY",
+		"firstType": "SINGLE_CAR"
+	},
+	"addPicsBusiness": false,
+	"transferRecords": [{
+		"time": "2020-11-17T07:38:32.420Z",
+		"_id": "5fb37df8b11a8c0007aeb0ee",
+		"content": ["坐席报案"]
+	}],
+	"remarkInfos": [],
+	"hasNewRemark": false,
+	"newMsgAgent": true,
+	"newMsgAccount": false,
+	"reasonVoiceGotSuc": false,
+	"topReasonVoiceSendCount": 0,
+	"topReasonVoiceSendLastState": false,
+	"returnedReason": [],
+	"huangheDefloss": [],
+	"newDeflossReport": false,
+	"isLostContactCsr": 0,
+	"lostContactCsrTrack": [],
+	"multiReport": false,
+	"outInsurancePeriod": false,
+	"bankRefound": {},
+	"processProgress": [{
+		"step": "REPORT_SUCCESS",
+		"status": "resolve",
+		"stepIndex": 1,
+		"ctime": "2020-11-17T07:38:32.452Z",
+		"utime": "2020-11-17T07:38:32.452Z",
+		"_id": "5fb37df8b11a8c0007aeb0ed",
+		"records": []
+	}, {
+		"step": "MARTERIALS_UPLOAD",
+		"status": "pending",
+		"stepIndex": 2,
+		"ctime": "2020-11-17T07:38:32.452Z",
+		"utime": "2020-11-17T07:38:32.452Z",
+		"pendingBegin": "2020-11-17T07:38:32.452Z",
+		"_id": "5fb37df8b11a8c0007aeb0ec",
+		"records": []
+	}, {
+		"step": "MARTERIALS_AUDIT",
+		"status": "init",
+		"stepIndex": 3,
+		"ctime": "2020-11-17T07:38:32.452Z",
+		"utime": "2020-11-17T07:38:32.452Z",
+		"_id": "5fb37df8b11a8c0007aeb0eb",
+		"records": []
+	}, {
+		"step": "CLAIM_AUDIT",
+		"status": "init",
+		"stepIndex": 4,
+		"ctime": "2020-11-17T07:38:32.452Z",
+		"utime": "2020-11-17T07:38:32.452Z",
+		"_id": "5fb37df8b11a8c0007aeb0ea",
+		"records": []
+	}, {
+		"step": "REMITED",
+		"status": "init",
+		"stepIndex": 5,
+		"ctime": "2020-11-17T07:38:32.452Z",
+		"utime": "2020-11-17T07:38:32.452Z",
+		"_id": "5fb37df8b11a8c0007aeb0e9",
+		"records": []
+	}],
+	"defLossTask": {},
+	"materialsAudit": {
+		"firstTypes": [{
+			"value": "IDPhotos",
+			"completeness": 0,
+			"_id": "5fb37df8b11a8c0007aeb0e1",
+			"secondTypes": [{
+				"value": "riderIdCard",
+				"_id": "5fb37df8b11a8c0007aeb0e8",
+				"status": "toUpload",
+				"isShow": true,
+				"isRequired": true
+			}, {
+				"value": "riderBankCard",
+				"_id": "5fb37df8b11a8c0007aeb0e7",
+				"status": "toUpload",
+				"isShow": false,
+				"isRequired": false
+			}, {
+				"value": "claimApplication",
+				"_id": "5fb37df8b11a8c0007aeb0e6",
+				"status": "toUpload",
+				"isShow": true,
+				"isRequired": true
+			}, {
+				"value": "orderInfo",
+				"_id": "5fb37df8b11a8c0007aeb0e5",
+				"status": "toUpload",
+				"isShow": true,
+				"isRequired": true
+			}, {
+				"value": "accidentCert",
+				"_id": "5fb37df8b11a8c0007aeb0e4",
+				"status": "toUpload",
+				"isShow": false,
+				"isRequired": false
+			}, {
+				"value": "otherIdCard",
+				"_id": "5fb37df8b11a8c0007aeb0e3",
+				"status": "toUpload",
+				"isShow": false,
+				"isRequired": false
+			}, {
+				"value": "indemnityAgreement",
+				"_id": "5fb37df8b11a8c0007aeb0e2",
+				"status": "toUpload",
+				"isShow": true,
+				"isRequired": true
+			}],
+			"status": "toUpload",
+			"isShow": true
+		}, {
+			"value": "injury",
+			"completeness": 0,
+			"_id": "5fb37df8b11a8c0007aeb0dd",
+			"secondTypes": [{
+				"value": "injuredParts",
+				"_id": "5fb37df8b11a8c0007aeb0e0",
+				"status": "toUpload",
+				"isShow": true,
+				"isRequired": true
+			}, {
+				"value": "invoice",
+				"_id": "5fb37df8b11a8c0007aeb0df",
+				"status": "toUpload",
+				"isShow": true,
+				"isRequired": true
+			}, {
+				"value": "medicalInvoiceEtc",
+				"_id": "5fb37df8b11a8c0007aeb0de",
+				"status": "toUpload",
+				"isShow": true,
+				"isRequired": true
+			}],
+			"status": "toUpload",
+			"isShow": true
+		}],
+		"completeness": 0
+	},
+	"majorCase": {
+		"yes": false,
+		"type": "NORMAL"
+	},
+	"coopTaskType": "NONE",
+	"complaint": {
+		"records": []
+	},
+	"eleme": {
+		"accidentCause": {},
+		"claimInformationList": [],
+		"riskContrFlagReadStatus": "1"
+	},
+	"expressStatus": "NO_POST",
+	"expressInfo": [],
+	"hasNewImg": false,
+	"__v": 0,
+	"ntime": "2020-11-17T07:38:32.670Z",
+	"version": "1.0",
+	"ownCarLoss": {
+		"carOwner": "戚薇",
+		"cellPhone": "18312341234",
+		"idCard": {
+			"id": "130635199104240001",
+			"_id": "5fb37df8b11a8c0007aeb0f1"
+		},
+		"cpicLoss": {
+			"isInjury": "1",
+			"_id": "5fb37df8b11a8c0007aeb0f0",
+			"isCarLossOpen": false,
+			"isDamageOpen": false,
+			"isInjuryOpen": false,
+			"directCompensation": false,
+			"isMessageSend": false,
+			"damageFees": [],
+			"injuryFees": [],
+			"illegalBehavior": {
+				"firstType": "01",
+				"secondType": "04"
+			},
+			"casualty": "1",
+			"disabilityDegree": "03",
+			"hospital": {
+				"name": "医院甲",
+				"address": {
+					"provinceName": "河北省",
+					"cityName": "邯郸市",
+					"countyName": "肥乡区",
+					"addrDetail": "医院地址333号"
+				}
+			}
+		},
+		"_id": "5fb37df8b11a8c0007aeb0ef",
+		"lossWorkTime": [],
+		"signImgs": [],
+		"defLossPics": [],
+		"estates": [],
+		"storagePics": [],
+		"otherCardPics": [],
+		"bankCardPics": [],
+		"drivingSide": [],
+		"drivingMain": [],
+		"driverSide": [],
+		"driverMain": [],
+		"IdRevert": [],
+		"IdFront": [],
+		"carPics": [],
+		"uploadPics": [],
+		"videoPics": [],
+		"type": "lossAssCar",
+		"accidentResponse": "1",
+		"payee": {
+			"payType": "1",
+			"name": "测试收款人",
+			"payMode": "3",
+			"payObj": "0"
+		},
+		"bankCard": {
+			"bankNo": "B1002",
+			"provinceCode": "0000002",
+			"cityCode": "0000041",
+			"branchNo": "00143926",
+			"num": "102030405060"
+		}
+	},
+	"accidentDetail": "俩车碰撞是事件经过",
+	"reportAddress": {
+		"provinceName": "河北省",
+		"cityName": "石家庄市",
+		"countyName": "新华区",
+		"addrDetail": "保定市2225号"
+	},
+	"place": "",
+	"accidentAddress": {
+		"provinceName": "上海市",
+		"cityName": "上海市",
+		"countyName": "徐汇区",
+		"addrDetail": "徐汇区测试地址200号",
+		"_id": "5fb37df8b11a8c0007aeb0f3"
+	},
+	"accidentPlace": "上海市上海市徐汇区徐汇区测试地址200号",
+	"accidentTime": "15:35:08",
+	"accidentDate": "2020-10-01",
+	"cpic": {
+		"policyNo": "ASSH1234335346655777",
+		"planCode": "P130703002000000010",
+		"policy": {
+			"__v": 0,
+			"tenant": "5e3cbb6939e4d500074a3b5e",
+			"utime": "2020-09-30T03:52:58.581Z",
+			"ctime": "2020-09-22T08:39:27.740Z",
+			"aplt": {
+				"_id": "5f74011aefbfa80007f57917",
+				"name": "投保人姓名",
+				"type": "5",
+				"code": "182873737"
+			},
+			"employee": {
+				"_id": "5f74011aefbfa80007f57916",
+				"name": "戚薇",
+				"type": "1",
+				"code": "130635199104240001"
+			},
+			"sumInsured": 1000,
+			"endDateIndex": 20201030,
+			"endDate": "2020-10-30T15:59:59.000Z",
+			"startDateIndex": 20200301,
+			"startDate": "2020-02-29T17:00:00.000Z",
+			"planCode": "P130703002000000010",
+			"coreProductCode": "13070300",
+			"idCardType": "5",
+			"idCardNum": "TX0000000000",
+			"customerName": "甜新",
+			"policyNo": "ASSH1234335346655777",
+			"_id": "5f69b83f2d206e00073a5701"
+		},
+		"riskName": "13070300",
+		"insuredIdCard": {
+			"name": "甜新",
+			"certificateCode": "5",
+			"certificateNum": "TX0000000000",
+			"_id": "5fb37df8b11a8c0007aeb0f7"
+		},
+		"insuredStartDate": "2020-02-29T17:00:00.000Z",
+		"insuredEndDate": "2020-10-30T15:59:59.000Z",
+		"reporterIdCard": {
+			"name": "测试人于",
+			"certificateCode": "1",
+			"certificateNum": "130635199104240001",
+			"_id": "5fb37df8b11a8c0007aeb0f6"
+		},
+		"reportEventType": {
+			"eventType": "1",
+			"subEventType": "3",
+			"_id": "5fb37df8b11a8c0007aeb0f5"
+		},
+		"_id": "5fb37df8b11a8c0007aeb0f4",
+		"lawHelp": {
+			"isLawHelp": "0"
+		},
+		"hospitalCare": {
+			"isHospitalCare": "0"
+		},
+		"accommodation": {
+			"isAccommodate": "0"
+		},
+		"preCompensation": {
+			"isPreCompensate": "0"
+		},
+		"robotCreated": true,
+		"messageInformState": "1",
+		"eleSynClaimSuc": false,
+		"eleSynClaimReportSuc": false,
+		"claimAmount": "666",
+		"lossAssessmentAmount": "6666",
+		"claimConclusion": "理赔结论999号"
+	},
+	"reporterCellPhone": "18312341234",
+	"reporter": "测试人于",
+	"date": "2020-11-17T07:38:32.451Z",
+	"subState": "noSubmit",
+	"referer": "AGENT",
+	"channel": "client",
+	"agentId": {
+		"_id": "5e9d079f0ef8be00073e256b",
+		"fullUserId": "yzc@undefined",
+		"createdAt": "2020-04-20T02:23:27.844Z",
+		"updatedAt": "2020-11-17T06:37:27.236Z",
+		"email": "18604512354",
+		"cellphone": "18604512354",
+		"loginName": "yzc",
+		"fullName": "yzcc测试",
+		"username": "yzc",
+		"tenant": "5e3cbb6939e4d500074a3b5e",
+		"orgAccount": "5e40e03e39e4d500074a3b62",
+		"supervisePhone": "1",
+		"unencryPassword": "123456",
+		"agentRole": "5e4b7a148d1e6323b0a531a9",
+		"coopTaskAssignedTime": "2020-11-05T03:08:07.194Z",
+		"thirdAccountPass": "",
+		"thirdAccountUser": "",
+		"thirdAccount": "",
+		"isCreateAdjust": true,
+		"userType": 30,
+		"accountStatus": true,
+		"isLocked": false,
+		"notificationSound": true,
+		"showNotification": true,
+		"permission": ["claim", "defLoss", "collector", "clientReview", "video"],
+		"profilePic": "",
+		"departments": ["5ea125706ba1bb0007590101", "5ee050a500b0e01f93b9c0f9", "5e40f4a739e4d500074a3b70"]
+	},
+	"orgAccount": "5e40e03e39e4d500074a3b62",
+	"tenant": "5e3cbb6939e4d500074a3b5e",
+	"flowId": "20201117000003",
+	"utime": "2020-11-17T07:38:32.676Z",
+	"ctime": "2020-11-17T07:38:32.000Z",
+	"_id": "5fb37df8b11a8c0007aeb0db",
+	"dealer": {
+		"review": "无",
+		"loss": "无",
+		"agent": "无",
+		"claim": "无"
+	},
+	"accidentReason": "1454",
+	"accidentCause": [null, null]
+}

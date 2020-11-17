@@ -2,36 +2,40 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
-import openpyxl
-import traceback,os,re,datetime,time,pyautogui,pyperclip
+import traceback,os,re,datetime,time,pyautogui,pyperclip,openpyxl,requests
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.select import Select
 import pyautogui #鼠标点击
 from selenium.webdriver.common.keys import Keys
 import pyperclip #复制粘贴
-import requests
 
 def start_chrome():
 	chrome_exe = 'chrome.exe --remote-debugging-port=9222 --user-data-dir="C:\selenum\AutomationProfile'
 	os.popen(chrome_exe)
 	time.sleep(2)
-def dr():
+def dr1():
 	chrome_options = Options()
 	chrome_options.add_argument('--disable-infobars')
 	chrome_options.add_experimental_option("debuggerAddress","127.0.0.1:9222")
 	chrome_driver = "C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe"
 	driver = webdriver.Chrome(chrome_driver,chrome_options=chrome_options) #chrome_options
 	return driver
+def dr():
+	driver = webdriver.Chrome()
+	return driver
 def current_url():
 	a=driver.current_url
-	if a=='https://yds-dzh-prod.ikandy.cn//txtechnology/login':
+	#if a=='https://yds-dzh-prod.ikandy.cn//txtechnology/login':
+	if a=='https://www.baidu.com':
 		#driver.find_element_by_xpath('/html/body/div[3]/div/div[2]/div/div[1]/div/div/div[2]/button').click()
 		pass
 	else:
-		driver.get('https://yds-dzh-prod.ikandy.cn/')
+		driver.get('https://www.baidu.com')
+		#driver.get('https://yds-dzh-prod.ikandy.cn/')
 		#处理网页弹框
 		time.sleep(3)
-		driver.find_element_by_xpath('/html/body/div[3]/div/div[2]/div/div[1]/div/div/div[2]/button').click()
+		#driver.find_element_by_xpath('/html/body/div[3]/div/div[2]/div/div[1]/div/div/div[2]/button').click()
+
 
 def tpa_url():
 	driver.get('https://tpaprod.ikandy.cn/')
@@ -74,7 +78,7 @@ def B_choice():
 	#driver.find_element_by_class_name('btn_create').click()
 	wb = openpyxl.load_workbook('name.xlsx')
 	sheet = wb.get_active_sheet()
-	for currt_id_raw in range(5,sheet.max_row+1):
+	for currt_id_raw in range(3,sheet.max_row+1):
 		time.sleep(2)
 		produceName = sheet.cell(row=currt_id_raw,column=2).value
 		userName = sheet.cell(row=currt_id_raw,column=7).value
@@ -108,7 +112,7 @@ def read_xlsx_zuoxi(filename):
 	'''读取表格内容 然后创建账号'''
 	wb = openpyxl.load_workbook(filename)
 	sheet = wb.get_active_sheet()
-	for currt_id_raw in range(2,6):
+	for currt_id_raw in range(3,sheet.max_row+1):
 		#sheet.max_row+1
 		#账号、姓名、手机号，密码
 		user_loginname = sheet.cell(row=currt_id_raw,column=2).value
@@ -129,10 +133,13 @@ def location_shubiao():
 	x,y=pyautogui.position() #获取当前鼠标的位置
 	print(x,y)
 	
-if __name__ == '__main__':	
-	start_chrome()
+if __name__ == '__main__':
+	#start_chrome()
 	driver=dr()
 	current_url()
+	driver.find_element_by_id('kw').send_keys('test')
+	time.sleep(2)
+	driver.find_element_by_id('su').click()
 	login()
 	time.sleep(5)
 	#setting_button()

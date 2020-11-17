@@ -39,7 +39,7 @@ def serch_str_list(loginName_full):
 def get_account_id():
   r = requests.get('https://tpaprod.ikandy.cn/api/agent_list?pageIndex=1&pageSize=1000&searchTenant=5e5ca352f5dc310006e2ea62')
   print(type(r.text))
-get_account_id()
+#get_account_id()
 
 def get_millisecond(i):
     #print(time.localtime(time.time()))
@@ -53,6 +53,7 @@ case_time = get_millisecond(1)*1000
 
 
 def tap_creat_order(i_time):
+    '''报案'''
     tpa_create_data = '{"tenantCode":8,"policyNo": "ASSH1234335346655799","isHorsemanSelf":true,"idCardNum":"130635199404242411","reporterCellPhone": "18321020000","accidentDateTime":%d,"accidentAddress": {"province": "上海市","city": "上海市","county": "浦东新区","addrDetail": "出险地点详细地址"},"reportAddress": { "province": "江苏省", "city": "南京市","county": "玄武区","addrDetail": "玄武湖附近"},"accidentDetail": "无","reportEventType": {"eventType": "1","subEventType": "2"},"accidentType": {"firstType": "MULTI_CAR"},"isInjury": "1","otherCarLoss": [{"isDamage": "1","isInjury": "0","isCarLoss": "0"}]}'%i_time
     tpa_create_data = tpa_create_data.encode(encoding='UTF8')
     request = 'https://tpatest.ikandy.cn/api/txfit/v2.0/report'
@@ -62,7 +63,8 @@ def tap_creat_order(i_time):
     r=requests.post(url = request,data=(tpa_create_data),headers= newReport_headers)
     print(r.text)
 for i in range(3):
-  i_time = get_millisecond(i)
+  pass
+  #i_time = get_millisecond(i)
   #tap_creat_order(i_time)
 def tap_kick_out_account():
   '''踢出账号'''
@@ -73,3 +75,71 @@ def tap_kick_out_account():
   r = requests.get(url=url,headers= newReport_headers2,verify=False)
   print(r.text)
 #tap_kick_out_account()
+def tap_login():
+  url = 'https://tpatest.ikandy.cn/api/txtechnology/login'
+  data = '''
+  {
+  "loginName":"yzc",
+  "password":"123456"
+  }
+  '''
+  Content_Type =  'application/json'
+  newReport_headers={'Content-Type':Content_Type}
+  r = requests.post(url=url,data=data,headers= newReport_headers)
+  print(r.text)
+def tpa_check_accout(accout,address=1):
+  '''查询'''
+  if  address== 1:
+    tap_url = 'https://tpatest.ikandy.cn/api/agent_list?pageIndex=1&pageSize=10&searchStr=%s'%accout
+  else:
+    tap_url =  'https://tpaprod.ikandy.cn/api/agent_list?pageIndex=1&pageSize=10&searchStr=%s&searchTenant=5e5ca352f5dc310006e2ea62'%accout
+  #'https://tpaprod.ikandy.cn/api/agent_list?pageIndex=1&pageSize=10&searchStr=yzc'
+  Access_Token = r'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbk5hbWUiOiJ5bWYtYWRtaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTYwNTE2NDM5NiwiZXhwIjoxNjA1MjUwNzk2fQ.ZdCSJB6P9cKjhnQTyR9xzGl0wP0UAOKvV3ZtmYWjT-Q'
+  print(tap_url)
+  User_Agent = r'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36'
+  headers = {'Accept':'application/json','Access-Token':Access_Token,"user-agent":User_Agent}
+  r = requests.get(url=tap_url)#,headers=headers,verify=False)
+  r = json.loads(r.text)
+  #print(r)
+  return r['result']['agents'][0]["_id"]
+def tpa_kickout(accout_id,address=1):
+  '''踢出'''
+  accout_id = tpa_check_accout(accout_id,address)
+  if address == 1:
+    url = 'https://tpatest.ikandy.cn/api/agents/kickoutAgent/%s'%accout_id
+  else:
+    url = 'https://tpaprod.ikandy.cn/api/agents/kickoutAgent/%s'%accout_id
+  r = requests.get(url = url)
+  print(r.text)
+
+def tpa_lossAss_report():
+  '''保存按钮'''
+  url = 'https://tpatest.ikandy.cn/api/lossAss/newReport'
+  User_Agent=r'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36'
+  Access_Token=r'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbk5hbWUiOiJ5emMiLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTYwNTE2MTc3OSwiZXhwIjoxNjA1MjQ4MTc5fQ.VackPzYWLePhHnx3tGj3u8Br-3FB96-E560fEt07Pa4'
+  newReport_headers2={'Content-Type':'application/json','Access-Token':Access_Token,"user-agent":User_Agent}
+  with open('lossAss_report.txt','r',encoding = 'UTF-8') as f:
+    data = json.load(f)
+  #print(data)
+  data = json.dumps(data)
+  #print(data)
+  print(type(data))
+  r = requests.post(url=url,data=data,headers=newReport_headers2,verify=False)
+  print(r.text)
+def creat_case():
+  ''''''
+  data = '{"idCardNum":"130635199104240001","policyNo":"ASSH1234335346655777","reporterCellPhone":"18312341234","horsemanCellPhone":"18312341234","reporter":"戚薇测试002","reporterCertCode":"1","reporterCertNum":"130635199104240001","reportEventType":{"eventType":"1","subEventType":"3"},"accidentAddress":{"province":"河北省","city":"邯郸市","county":"永年区","addrDetail":"测试"},"accidentPlace":"测试","accidentDateTime":1601534154992,"accidentDetail":"事件经过测试","agentId":"5e9d079f0ef8be00073e256b","accidentType":{"firstType":"SINGLE_CAR","secondType":"HORSEMAN_INJURY"},"isInjury":"1"}'
+  tap_test_url = 'https://tpatest.ikandy.cn/api/lossAss/report/createByAgent'
+  Access_Token = r'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbk5hbWUiOiJ5emMiLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTYwNTQ5MTY2OSwiZXhwIjoxNjA1NTc4MDY5fQ.iqWfY5fK34jNFQ-aUvlmIOP1QS23DnV86Ubc7-m9quI'
+  User_Agent=r'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36'
+  test_url = 'https://tpatest.ikandy.cn/api/lossAss/report/createByAgent'
+  newReport_headers2={'Content-Type':'application/json','Access-Token':Access_Token,"user-agent":User_Agent}
+  data =data.encode(encoding='UTF8')
+  r = requests.post(url=test_url,data=data,headers=newReport_headers2,verify=False)
+  print(r.text)
+if __name__ == '__main__':
+  #tap_login()
+  #tpa_check_accout('yzc',1)
+  #tpa_kickout('yzc',2)
+  #tpa_lossAss_report()
+  #creat_case()

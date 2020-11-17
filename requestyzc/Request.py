@@ -59,27 +59,13 @@ def creat_multi_newReport():
 	print(r.status_code)
 	print(r.text)
 
-multi_tokens2 = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbk5hbWUiOiJ5emMiLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTU5OTAxNjE1MCwiZXhwIjoxNTk5MTAyNTUwfQ.eFbeLIF8kKrsp7CeCzDsad0ahMWR6EoPGi3QZquzxHM'
-multi_cookie2 = r'_ga=GA1.2.841391502.1594783400; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%221738e63e67311-08d580513c2524-67e1b3f-1049088-1738e63e674609%22%2C%22%24device_id%22%3A%221738e63e67311-08d580513c2524-67e1b3f-1049088-1738e63e674609%22%2C%22props%22%3A%7B%22%24latest_referrer%22%3A%22%22%2C%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%7D%7D'
-User_Agent =  r'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36'
-newReport_headers2={'Content-Type':'application/json','Access-Token':multi_tokens2,'Cookie':multi_cookie2,"user-agent":User_Agent}
-gxrb_url = 'https://gxrb-yds-test.ikandy.cn/api/agents/869000213@gxrb-test.txtechnology.com.cn'
-def gxrb_yds_test():
-    '''广西人保获取核心系统APP账号'''
-    r = requests.get(url=gxrb_url,headers= newReport_headers2,verify=False)
-    datatext = json.loads(r.text)
-    with open('njrb.txt','ab+') as f:
-        #new_text = '+'.join([datatext['result']['thirdAppAccount'],datatext['result']['thirdAppAccountPass']])
-        new_text = '\nAPP账号：%s\nAPP密码：%s\nid：%s\nsim卡id：%s\n时间戳：\n'%(datatext['result']['thirdAppAccount'],datatext['result']['thirdAppAccountPass'],datatext['result']['thirdAccountImeiNo'],datatext['result']['thirdAccountSimNo'])
-        print(datatext['result']['thirdAppAccount'])
-        f.write(bytes(new_text,'UTF-8'))
-gxrb_yds_test()
 
+User_Agent =  r'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36'
 njrb_url = 'https://yds-dzh-prod.ikandy.cn/api/updateAgentProfile'
 njrb_cookies = r'_dx_uzZo5y=4f1b6f21ff4f33ddaefc3076cb2d77f11f9089f99c81178fd5aabee822f71ef492cb510d; _ga=GA1.2.841391502.1594783400; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%221738e63e67311-08d580513c2524-67e1b3f-1049088-1738e63e674609%22%2C%22%24device_id%22%3A%221738e63e67311-08d580513c2524-67e1b3f-1049088-1738e63e674609%22%2C%22props%22%3A%7B%22%24latest_referrer%22%3A%22%22%2C%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%7D%7D; _dx_app_6be4cdaed176efb4bbc6843f6381a56e=5f507ed6hXBYiiRrUvsk07slhAsqiVrh9rWBV9E1; _dx_captcha_vid=BBBF5941D3C91AA919D5DBEF79A0DC731A192F9230E1DAA62E05AC3B42AE347AE2F5F3073356F470597565CAB1AEE93D308B5BF61517C5D405A40285E3A1D75748F499821435FF8F4B5857D6089EA820'
 njrb_token = r'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbk5hbWUiOiJhZG1pbiIsInBhc3N3b3JkIjoiNWYwM2E0YThiN2NiMWNmZTQ2ODQ4YmU2N2QwMjY1YTg2ZjY2N2Q0YjgwYTIxODY3MzViMmQwNGQ4NzZhNzIyNCIsImNhcHRjaGEiOiJCQkJGNTk0MUQzQzkxQUE5MTlENURCRUY3OUEwREM3MzFBMTkyRjkyMzBFMURBQTYyRTA1QUMzQjQyQUUzNDdBRTJGNUYzMDczMzU2RjQ3MDU5NzU2NUNBQjFBRUU5M0QzMDhCNUJGNjE1MTdDNUQ0MDVBNDAyODVFM0ExRDc1NzQ4RjQ5OTgyMTQzNUZGOEY0QjU4NTdENjA4OUVBODIwOjVmNTA3ZWQ2aFhCWWlpUnJVdnNrMDdzbGhBc3FpVnJoOXJXQlY5RTEiLCJpYXQiOjE1OTkyMTI4OTUsImV4cCI6MTU5OTI5OTI5NX0.hfjEZFF41qJC-UvcAw8b2pOovmiLKOVSc6a83tXms1M'
 data_njrb_cx = {
-  "fullUserId": "14173244@undefined",
+  "fullUserId": "zq@undefined",
   "email": "18312341311@qq.com",
   "fullName": "王胜",
   "thirdAccountTime": "1599530575036",
@@ -177,9 +163,9 @@ claim_agent = '5f9914d809991312aac2ecbf'
 claim_flowId = 'GD20201028145357326563'
 test_tenant='5f4608236149d00007838439'
 test_orgAccount = '5f471348aca231000774e39d'
-test_agent = '5f603327189555000601de3b'
-test_flowId = 'GD20201012105746656215'
-A=[claim_tenant,claim_orgAccount,claim_agent,claim_flowId]
+test_agent = '5f4751426149d000078a8c7e'
+test_flowId = 'GD20201105200750519467'
+A1=[claim_tenant,claim_orgAccount,claim_agent,claim_flowId]
 A=[test_tenant,test_orgAccount,test_agent,test_flowId]
 data = '''{
 "tenant":"%s",
@@ -212,7 +198,7 @@ data = '''{
 }
 }'''%(A[0],A[1],A[2],A[3])
 
-old_url = 'https://developer.ikandy.cn:63222/api/external/report/update'
+old_url = 'https://dzh-tx-test.ikandy.cn/api/external/report/update'
 new_url = 'https://claim.cloud-ins.cn/api/external/report/update'
 def tap_update():
   request = old_url
@@ -223,19 +209,27 @@ def tap_update():
   print(r.text)
 #tap_update()
 
+
 date_tap = '''
 {
 "tenant":"5f4608236149d00007838439",
 "orgAccount":"5f471348aca231000774e39d",
-"encodeData":"6d7d8f478493a47c704b91c2ac376dec1f66a06b3b18f37519fb65c76d3e245408ca86108559bd02e9459e76da7191189b08b4e638307632a7e9d6f729ff3b728f727df1c7880c4f31cf1a06c3605142dbce015c441930e5bc7e41f00c7426bbb9e4c5e7a27117158625041005a3ec54990022b82ba924a440ae4ea3d586aedde9d556528feaf52a82b7703ccedd759a91e905c26137172fd08a5c3f2badef01491cae0f13ab8eb7de4cba512e377310c6a0a2ab991ca13da900e6fa7c56d9908baaa256e3a4bff9f06a230d31fbbda4e9e52253573b477c82b7b112af7e46bb7878df9eab40e4e9087e29459a8ef6457bb80866ce0b8e303157e155e0ebdd78d5f0d84bb16413019f791673168e9184836dde4dcf391ecab683143dc4021e5b8a8187d2ecb39814a2f93a15659770ff3f4c4e27db8a5e767832a4a12179be45d3a16b134f9393a7cb44bf3ab5cfdb0ad9293e3dc22a551184f74a318851840edae7d62f4f2a274876352e2df849978947038cc66357658fef9c06e2767061eb68a3d48b41d3ef44e248e2a1afe1e13286f1b71d494169912c7784e2df210ccfe62b0af182be24cd39a5d0e8cedab9de58b2810579b610fc0bfb71a528372056e43c1d716bf1056fdd3200b16d674e47bdbd85c49d322a79be5c28ca4b9ecf73fdbd6164aa47f72dfb10049e6ca36b8f199bcb9f40b22a00b41556a4fce63be1f2eca5730227601fe54568679ed41e32e21d60f30bf364a256ed4a7a6d548c741b152d321ce6708b71644e20f0c571d619b64d1ae87dfc21a3d45ee56505cc1318f6dbc3bcb4ffe781db77f25e076a6615eff64890b4bff882115197a8225e13ae686426a3b892e10dda2ef706e5cdeed58c51f16f69bc6592b5139d007e9597040df1416738026c0d54e8c8f449e6ce3c79ad49eee98aad94ae995b180ea53dc328c93211154e5ed20890de8c2f47b65f01cde6b15f468bdaca0bb9f03535aff1672ca4c07e42f0b875cb582d412c19db9971d5b810b932bec6297178ab519fe7b1bc454531cd261d8018cb6d664a70d9ed89a0b3affc839dfa876a4aed6ed41a40c83a714f0279a6a4595f0eba4743c70e49a93a4a21b96bffa6e1d5840132d0e37db65faf60b8f8fc1c49796194c520b72d312be5765f18fb7b892aea43f6c8f94af42c51d5e4c09b58796df7abbf4f9ea7b8b71a69fed664caaff3e087d616cd6db8f90e16377ef7b78326f3e8ec85405cef87e8e3556afb898c0847d832"
+"encodeData":"006981a9ce4b2b8d159ca4e80a4655b8aa8bb65db2e4fc7237db39c9c6e968c9322e276b3eeebb2c760aa6a93bd5f2b3dd7c74ecb83317834b4b6ea3f9f3bc51ea01106382930d8cb4f9318a49a7ba684ccd6770003e87441bd34aae6da1b11aa5cc3c0da85efa916f9859b6d0c270011eebfecaeec80ec8a87a4cd3c10a48216d522126ccb166f23dafff1eb453ca688c468052705354dca89124f876e7befed3ce55b9131c6d2f94083c2d092bc92b80178e4bafc26327c2d77a5db1fb3e8e5aa36baa61cdbc67ef3dd0b6142312f8bb9bc513c77630d1d2f74083b63edcf21f44cae8080e4efaa109b739e4041f5119f26aa7cee71b19af5ffb0aa7ab499baa20e9ff030c05c1ea1a617fe5f323e3d2c86fb17e44d2e853a838efc9fd6350a6013de0e03302685084fa159406cc4789d9335607d6d3fc862e39c06a396c88e6e21039fbb8fcfd96349fe73b38d549cad66810d655fa9acc25b335c952f3e2e8a7c085b6524869fb5275dd6eab8611efb0db730addf8dd054307957577321a2c59cf4a359fc4f408eb6d2a23a095531d8fc94bc372c3072ff9ab3790d4a723cd6e4104d916ea305b7752940a76c230156566566de33cfa3701cfdff0bc31fe1c37332f7b360f484f9b1a593b2c9eeef03904c7c2853e91eb49e1463fac704c490900bb1871644a8d7949c4253b3f12bb5a59650d927a5e713dae4670ee50a22f10b223b44d652908a42a41d0af542bf78aaf6d9331d3ad557fe3a9b2cdeac5f7accbf877fe85e6e76c16ce8a50f83c6188d6dbbb1022e5ea7c48d0de422c20b250c160a418edc8f09c1e87a971bde7ca5c81c1474efe94b78355e56ad74a759b0c8912d4c34370e506dcb7e0bfc6fe18dab7f0eeef6287d1795dcbd3b14f7dfbc0c03bb9ac64e73dfd01fe79d437d98b3895b9b87230cb994d58e563500bc733178b5fc5921718942e8eb851de3e0329f78ca5589c03b33d678e011c298f3b929aa54b064d733ed0ef353c167472f3f901db3a18aae5550c9f8d80ab747c525d5041a661e74efcb1d95ee05d684e7a1c19f7dfb865649be60960940ac634246b8de0863c7103f18ad09476af28f16e77fe546550a363db67c5e4386aaee8cb1ee0e4dbc3bc74ee89fa8e1141b118f4e408c06ba712843bf8fe1db4231e3d17f4e62072ce002cd410586732123496674225b7985d17a32cb1a9f3aee2ac8162f110e02b8a1bf808706c1d5285703243fc579b17a744fedcb3ab63e21f4a5a3c"
 }
 '''
 
+date_tap_zhlh = '''
+{
+"tenant":"5f59e971af7fa46ce33835ca",
+"orgAccount":"5f963cf2af7fa46ce3383721",
+"encodeData":"006981a9ce4b2b8d159ca4e80a4655b8aa8bb65db2e4fc7237db39c9c6e968c9322e276b3eeebb2c760aa6a93bd5f2b3dd7c74ecb83317834b4b6ea3f9f3bc51ea01106382930d8cb4f9318a49a7ba684ccd6770003e87441bd34aae6da1b11aa5cc3c0da85efa916f9859b6d0c270011eebfecaeec80ec8a87a4cd3c10a48216d522126ccb166f23dafff1eb453ca688c468052705354dca89124f876e7befed3ce55b9131c6d2f94083c2d092bc92b80178e4bafc26327c2d77a5db1fb3e8e5aa36baa61cdbc67ef3dd0b6142312f8bb9bc513c77630d1d2f74083b63edcf21f44cae8080e4efaa109b739e4041f5119f26aa7cee71b19af5ffb0aa7ab499baa20e9ff030c05c1ea1a617fe5f323e3d2c86fb17e44d2e853a838efc9fd6350a6013de0e03302685084fa159406cc4789d9335607d6d3fc862e39c06a396c88e6e21039fbb8fcfd96349fe73b38d549cad66810d655fa9acc25b335c952f3e2e8a7c085b6524869fb5275dd6eab8611efb0db730addf8dd054307957577321a2c59cf4a359fc4f408eb6d2a23a095531d8fc94bc372c3072ff9ab3790d4a723cd6e4104d916ea305b7752940a76c230156566566de33cfa3701cfdff0bc31fe1c37332f7b360f484f9b1a593b2c9eeef03904c7c2853e91eb49e1463fac704c490900bb1871644a8d7949c4253b3f12bb5a59650d927a5e713dae4670ee50a22f10b223b44d652908a42a41d0af542bf78aaf6d9331d3ad557fe3a9b2cdeac5f7accbf877fe85e6e76c16ce8a50f83c6188d6dbbb1022e5ea7c48d0de422c20b250c160a418edc8f09c1e87a971bde7ca5c81c1474efe94b78355e56ad74a759b0c8912d4c34370e506dcb7e0bfc6fe18dab7f0eeef6287d1795dcbd3b14f7dfbc0c03bb9ac64e73dfd01fe79d437d98b3895b9b87230cb994d58e563500bc733178b5fc5921718942e8eb851de3e0329f78ca5589c03b33d678e011c298f3b929aa54b064d733ed0ef353c167472f3f901db3a18aae5550c9f8d80ab747c525d5041a661e74efcb1d95ee05d684e7a1c19f7dfb865649be60960940ac634246b8de0863c7103f18ad09476af28f16e77fe546550a363db67c5e4386aaee8cb1ee0e4dbc3bc74ee89fa8e1141b118f4e408c06ba712843bf8fe1db4231e3d17f4e62072ce002cd410586732123496674225b7985d17a32cb1a9f3aee2ac8162f110e02b8a1bf808706c1d5285703243fc579b17a744fedcb3ab63e21f4a5a3c"
+}
+'''
 def tap_update_new():
   request = 'https://dzh-tx-test.ikandy.cn/api/external/report/update'
   Content_Type =  'application/json' #; charset=utf-8'
   newReport_headers={'Content-Type':Content_Type}#,"user-agent":User_Agent}
   #datae = data.encode(encoding='UTF8')
-  r=requests.post(url = request,data=date_tap,headers= newReport_headers)
+  r=requests.post(url = request,data=date_tap,headers= newReport_headers,verify=False)
   print(r.text)
 tap_update_new()

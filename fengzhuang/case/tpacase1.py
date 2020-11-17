@@ -17,7 +17,7 @@ import datetime
 import os
 import HTMLTestRunner_cn
 import unittest
-#from util.emailtest import Run_Send_Mail
+from util.emailtest import Run_Send_Mail
 from util.MyLogger import My_Log
 from util.information_data import New_Data
 class Tpa_Simple_Case(unittest.TestCase):
@@ -110,5 +110,5 @@ if __name__ == '__main__':
     runner = HTMLTestRunner_cn.HTMLTestRunner(stream=f,title="TPA项目-简易正常流程",description=u"Tpa测试报告",verbosity=2)
     runner.run(suite)
     f.close()
-    #send_maili_case = Run_Send_Mail()
-    #send_maili_case.send_mail()
+    send_maili_case = Run_Send_Mail()
+    send_maili_case.send_mail()
