@@ -1,5 +1,5 @@
 {
-	"id": "5fb37df8b11a8c0007aeb0db",
+	"id": "5f880cdb22f1240007a7853f",
 	"state": "holdedOn",
 	"stateTrack": [{
 		"state": "holdedOn",
@@ -309,7 +309,7 @@
 		"insuredStartDate": "2020-02-29T17:00:00.000Z",
 		"insuredEndDate": "2020-10-30T15:59:59.000Z",
 		"reporterIdCard": {
-			"name": "测试人于",
+			"name": "测试人于接口上传",
 			"certificateCode": "1",
 			"certificateNum": "130635199104240001",
 			"_id": "5fb37df8b11a8c0007aeb0f6"
@@ -338,10 +338,10 @@
 		"eleSynClaimReportSuc": false,
 		"claimAmount": "666",
 		"lossAssessmentAmount": "6666",
-		"claimConclusion": "理赔结论999号"
+		"claimConclusion": "理赔结论999号99999"
 	},
 	"reporterCellPhone": "18312341234",
-	"reporter": "测试人于",
+	"reporter": "测试人于报案人",
 	"date": "2020-11-17T07:38:32.451Z",
 	"subState": "noSubmit",
 	"referer": "AGENT",
@@ -377,10 +377,10 @@
 	},
 	"orgAccount": "5e40e03e39e4d500074a3b62",
 	"tenant": "5e3cbb6939e4d500074a3b5e",
-	"flowId": "20201117000003",
+	"flowId": "20201015000013",
 	"utime": "2020-11-17T07:38:32.676Z",
 	"ctime": "2020-11-17T07:38:32.000Z",
-	"_id": "5fb37df8b11a8c0007aeb0db",
+	"_id": "5f880cdb22f1240007a7853f",
 	"dealer": {
 		"review": "无",
 		"loss": "无",

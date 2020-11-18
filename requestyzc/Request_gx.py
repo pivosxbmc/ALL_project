@@ -69,7 +69,7 @@ def read_xlsx_zuoxi(filename):
   '''读取表格内容 然后创建账号'''
   wb = openpyxl.load_workbook(filename)
   sheet = wb.get_active_sheet()
-  for currt_id_raw in range(3,sheet.max_row+1):
+  for currt_id_raw in range(2,sheet.max_row+1):
     #sheet.max_row+1
     #账号、姓名、手机号，密码
     user_loginname = sheet.cell(row=currt_id_raw,column=2).value

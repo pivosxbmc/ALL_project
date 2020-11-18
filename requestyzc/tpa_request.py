@@ -86,7 +86,11 @@ def tap_login():
   Content_Type =  'application/json'
   newReport_headers={'Content-Type':Content_Type}
   r = requests.post(url=url,data=data,headers= newReport_headers)
-  print(r.text)
+  r = json.loads(r.text)
+  token = r
+  print(token)
+  return token
+
 def tpa_check_accout(accout,address=1):
   '''查询'''
   if  address== 1:
@@ -111,14 +115,13 @@ def tpa_kickout(accout_id,address=1):
     url = 'https://tpaprod.ikandy.cn/api/agents/kickoutAgent/%s'%accout_id
   r = requests.get(url = url)
   print(r.text)
-
-def tpa_lossAss_report():
+def tpa_lossAss_report(token=r'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbk5hbWUiOiJ5emMiLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTYwNTY4ODAxOSwiZXhwIjoxNjA1Nzc0NDE5fQ.Mzo6A3Z6J_yrcRdfl9kOjwQa-LPjCNzICOENHmxg1Ns'):
   '''保存按钮'''
   url = 'https://tpatest.ikandy.cn/api/lossAss/newReport'
   User_Agent=r'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36'
-  Access_Token=r'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbk5hbWUiOiJ5emMiLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTYwNTE2MTc3OSwiZXhwIjoxNjA1MjQ4MTc5fQ.VackPzYWLePhHnx3tGj3u8Br-3FB96-E560fEt07Pa4'
+  Access_Token=str(token)
   newReport_headers2={'Content-Type':'application/json','Access-Token':Access_Token,"user-agent":User_Agent}
-  with open('lossAss_report.txt','r',encoding = 'UTF-8') as f:
+  with open('tpa_test_creat_case.json','r',encoding = 'UTF-8') as f:
     data = json.load(f)
   #print(data)
   data = json.dumps(data)
@@ -137,9 +140,18 @@ def creat_case():
   data =data.encode(encoding='UTF8')
   r = requests.post(url=test_url,data=data,headers=newReport_headers2,verify=False)
   print(r.text)
+def check_case_id(flowId):
+  '''通过工单floId获取相应的id等信息'''
+  url = 'https://tpatest.ikandy.cn/api/lossAss/getReportInfo/%s?from=agent'%flowId
+  r = requests.get(url = url,verify=False)
+  r = json.loads(r.text)
+  print(r['result'])
+
 if __name__ == '__main__':
-  #tap_login()
+  tap_login()
   #tpa_check_accout('yzc',1)
   #tpa_kickout('yzc',2)
   #tpa_lossAss_report()
+  check_case_id('20201015000013')
+
   #creat_case()
