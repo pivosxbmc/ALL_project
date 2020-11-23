@@ -116,8 +116,9 @@ class Creat_Case_Handle(object):
     #简易的创建案件
     def creat_new_case_handle(self,key_data,keys_data):
         Detail = (By.ID,'accidentDetail')
+        '''效验事件经过'''
         WebDriverWait(self.driver,10,1).until(EC.presence_of_element_located(Detail),'没有这个')        
-        for i in range(6,9):
+        for i in range(7,11):
             self.register_p.get_creat_case_choice_buttons()[i].click()
             #self.driver.switch_to.active_element.send_keys(Keys.DOWN)
             self.driver.switch_to.active_element.send_keys(Keys.ENTER)

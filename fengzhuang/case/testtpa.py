@@ -37,12 +37,13 @@ class Tpa_Simple_Case(unittest.TestCase):
         time.sleep(2)
         self.messges = New_Data()
         self.Tpa = Tpa_Business(self.driver)
+    
     @classmethod
     def tearDownClass(cls):
         pass
     def test_1loging_success(self):
         '''Tpa 登录验证'''
-        success = self.Tpa.tpa_login_base('yzc001','123456')
+        success = self.Tpa.tpa_login_base('yzc','123456')
         self.assertFalse(success)
     #@unittest.skip('现在不需要')
     def test_2creat_case(self):
@@ -50,6 +51,7 @@ class Tpa_Simple_Case(unittest.TestCase):
         for i in range(4,5):
             self.Tpa.tpa_creat_case_base('350622198301304575','2020-05-19 10:00:00',i,2)#,'18312341234',self.messges.get_address(),self.messges.get_text())
             time.sleep(1)
+
         #self.Tpa.tpa_creat_case_base('211103197505105905','2020-05-14 10:00:00',5,2)
     #@unittest.skip('现在不需要')
     def test_3lsearch_case(self):
@@ -87,6 +89,5 @@ class Tpa_Simple_Case(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
 
 

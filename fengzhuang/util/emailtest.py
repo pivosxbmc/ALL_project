@@ -26,9 +26,9 @@ class Run_Send_Mail(object):
 		self.msg = MIMEMultipart()
 		#输入email地址和口令：
 		self.from_addr = 'yu.zichen@txtechnology.com.cn'
-		self.password = 'cgdrVDXoxEHHBpME'
+		self.password = 'AXQX25wirvVvPmdT'
 		#输入收件人的地址：
-		self.to_addr =['1094491399@qq.com','2012129495@qq.com']
+		self.to_addr =['1094491399@qq.com','2012129495@qq.com',]
 		#输入SMTP服务器地址：
 		self.smtp_server = 'smtp.exmail.qq.com'
 		#发送人和收件人

@@ -56,7 +56,7 @@ class Tpa_Simple_Case(unittest.TestCase):
         print('结束')
     def test_1loging_success(self):
         '''Tpa 登录验证'''
-        success = self.Tpa.tpa_login_base('yzc001','123456')
+        success = self.Tpa.tpa_login_base('yzc','123456')
         self.add_img()
         self.assertFalse(success)
     #@unittest.skip('现在不需要')
@@ -110,5 +110,5 @@ if __name__ == '__main__':
     runner = HTMLTestRunner_cn.HTMLTestRunner(stream=f,title="TPA项目-简易正常流程",description=u"Tpa测试报告",verbosity=2)
     runner.run(suite)
     f.close()
-    send_maili_case = Run_Send_Mail()
-    send_maili_case.send_mail()
+    #send_maili_case = Run_Send_Mail()
+    #send_maili_case.send_mail()

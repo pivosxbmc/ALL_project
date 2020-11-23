@@ -11,7 +11,7 @@ class Creat_Case_Page(object):
         self.fd = FindElement(driver,'tpa_common_element')
     #
     def get_creat_case_button_element(self):
-        return self.fd.get_element('creat_case_button')[3]
+        return self.fd.get_element('creat_case_new_button')[1]
     def get_idcard_input_element(self):
         return self.fd.get_element('idcard_input')
     #输入时间
