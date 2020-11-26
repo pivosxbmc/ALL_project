@@ -163,8 +163,8 @@ claim_agent = '5f9914d809991312aac2ecbf'
 claim_flowId = 'GD20201028145357326563'
 test_tenant='5f4608236149d00007838439'
 test_orgAccount = '5f471348aca231000774e39d'
-test_agent = '5f4751426149d000078a8c7e'
-test_flowId = 'GD20201105200750519467'
+test_agent = '5f603327189555000601de3b'
+test_flowId = 'GD20201012105746656215'
 A1=[claim_tenant,claim_orgAccount,claim_agent,claim_flowId]
 A=[test_tenant,test_orgAccount,test_agent,test_flowId]
 data = '''{
@@ -175,29 +175,62 @@ data = '''{
 "agent":"%s",
 "flowId":"%s",
 "type": 6,
-"data": {
-"surveyConclude":"1111查勘意见测试测试测试测试测试测试测试田林路200号，俩车碰撞，收集四面",
-"signer":"qzrsf",
-"place":"000出险地点测试测试测试测试测试测试测试田林路200号，俩车碰撞，收集四面",
-"reportId":"12345666666",
-"accidentDate":"2020-09-15",
-"accidentTime":"03:09:00",
-"reporterCellPhone":"15610190001",
-"cellPhone":"18312341234",
-"accidentResponse":"2",
-"insuredName":"测试与",
-"carOwner":"驾驶员人于",
-"riskSummary":"测试测试测试测试测试测试测试田林路200号，俩车碰撞，收集四面",
-"carNumber":"123456",
-"frameNo":"vin02",
-"ctpPolicyNo":"jqxbdh02",
-"comPolicyNo":"syxbdh02",
-"encodeEnv":"prod",
-"damageReason":"事故原因测试测试测试测试测试测试测试田林路200号，俩车碰撞，收集四面"
-}
+  "data": {
+    "surveyConclude": "ckjl02",
+    "signer": "qzrsf",
+    "carNumber": "1106",
+    "swpfsm": "实物赔付声明",
+    "adjuster": "理赔员姓名",
+    "place": "出险地点地点地点地点地点88888888",
+    "reportId": "test20090201",
+    "accidentDate": "2020-09-15",
+    "accidentTime": "03:09:00",
+    "reporterCellPhone": "15610190001",
+    "insuredName": "bbxr",
+    "frameNo": "vin02",
+    "ctpPolicyNo": "jqxbdh02",
+    "comPolicyNo": "syxbdh02",
+    "damageReason": "sgyy02原因原因8888888事故原因事故原因",
+    "lossAmount": "000",
+    "damageFees": [{
+        "name": "物损物品1",
+        "lossAmount": "111"
+      }
+    ],
+    "otherCarLoss": [{
+        "carNumber": "三者1106",
+        "lossId": "326r",
+        "accidentTime": "03:09:00",
+        "insuredName": "bbxr",
+        "frameNo": "vin02",
+        "ctpPolicyNo": "jqxbdh02",
+        "comPolicyNo": "syxbdh02",
+        "damageReason": "sgyy02原因原因8888888事故原因事故原因",
+        "lossAmount": "333"
+      }
+    ]
+  }
 }
 }'''%(A[0],A[1],A[2],A[3])
 
+'''
+    "damageFees": [{
+        "name": "物损物品1",
+        "lossAmount": "111"
+      }
+    ],
+    "otherCarLoss": [{
+        "carNumber": "三者1106",
+        "lossId": "326r",
+        "accidentTime": "03:09:00",
+        "insuredName": "bbxr",
+        "frameNo": "vin02",
+        "ctpPolicyNo": "jqxbdh02",
+        "comPolicyNo": "syxbdh02",
+        "damageReason": "sgyy02原因原因8888888事故原因事故原因",
+        "lossAmount": "333"
+      }
+'''
 old_url = 'https://dzh-tx-test.ikandy.cn/api/external/report/update'
 new_url = 'https://claim.cloud-ins.cn/api/external/report/update'
 def tap_update():
@@ -207,14 +240,14 @@ def tap_update():
   datae = data.encode(encoding='UTF8')
   r=requests.post(url = request,data=datae,headers= newReport_headers,verify=False)
   print(r.text)
-#tap_update()
+
 
 
 date_tap = '''
 {
 "tenant":"5f4608236149d00007838439",
 "orgAccount":"5f471348aca231000774e39d",
-"encodeData":"006981a9ce4b2b8d159ca4e80a4655b8aa8bb65db2e4fc7237db39c9c6e968c9322e276b3eeebb2c760aa6a93bd5f2b3dd7c74ecb83317834b4b6ea3f9f3bc51ea01106382930d8cb4f9318a49a7ba684ccd6770003e87441bd34aae6da1b11aa5cc3c0da85efa916f9859b6d0c270011eebfecaeec80ec8a87a4cd3c10a48216d522126ccb166f23dafff1eb453ca688c468052705354dca89124f876e7befed3ce55b9131c6d2f94083c2d092bc92b80178e4bafc26327c2d77a5db1fb3e8e5aa36baa61cdbc67ef3dd0b6142312f8bb9bc513c77630d1d2f74083b63edcf21f44cae8080e4efaa109b739e4041f5119f26aa7cee71b19af5ffb0aa7ab499baa20e9ff030c05c1ea1a617fe5f323e3d2c86fb17e44d2e853a838efc9fd6350a6013de0e03302685084fa159406cc4789d9335607d6d3fc862e39c06a396c88e6e21039fbb8fcfd96349fe73b38d549cad66810d655fa9acc25b335c952f3e2e8a7c085b6524869fb5275dd6eab8611efb0db730addf8dd054307957577321a2c59cf4a359fc4f408eb6d2a23a095531d8fc94bc372c3072ff9ab3790d4a723cd6e4104d916ea305b7752940a76c230156566566de33cfa3701cfdff0bc31fe1c37332f7b360f484f9b1a593b2c9eeef03904c7c2853e91eb49e1463fac704c490900bb1871644a8d7949c4253b3f12bb5a59650d927a5e713dae4670ee50a22f10b223b44d652908a42a41d0af542bf78aaf6d9331d3ad557fe3a9b2cdeac5f7accbf877fe85e6e76c16ce8a50f83c6188d6dbbb1022e5ea7c48d0de422c20b250c160a418edc8f09c1e87a971bde7ca5c81c1474efe94b78355e56ad74a759b0c8912d4c34370e506dcb7e0bfc6fe18dab7f0eeef6287d1795dcbd3b14f7dfbc0c03bb9ac64e73dfd01fe79d437d98b3895b9b87230cb994d58e563500bc733178b5fc5921718942e8eb851de3e0329f78ca5589c03b33d678e011c298f3b929aa54b064d733ed0ef353c167472f3f901db3a18aae5550c9f8d80ab747c525d5041a661e74efcb1d95ee05d684e7a1c19f7dfb865649be60960940ac634246b8de0863c7103f18ad09476af28f16e77fe546550a363db67c5e4386aaee8cb1ee0e4dbc3bc74ee89fa8e1141b118f4e408c06ba712843bf8fe1db4231e3d17f4e62072ce002cd410586732123496674225b7985d17a32cb1a9f3aee2ac8162f110e02b8a1bf808706c1d5285703243fc579b17a744fedcb3ab63e21f4a5a3c"
+"encodeData":"6d7d8f478493a47c704b91c2ac376dec1f66a06b3b18f37519fb65c76d3e245408ca86108559bd02e9459e76da7191189b08b4e638307632a7e9d6f729ff3b728f727df1c7880c4f31cf1a06c3605142dbce015c441930e5bc7e41f00c7426bb3f34ba6ca3bf0f70f3f5f8d51cff519b9bbdb2ac9dbd7f2c9f9a6bb91c97c35852d2642c6f87bb4fed7396dd7b31600933481bc301b3cb2745f12bd33a3209e0f611e49c6481bf3c297fa1a5c0387f69607b17a5ef91b8092a7ad1d26d5fb4c94182884861482d983c8741b05b2480cc4f41be1f6319d5cffe3898fcfd88edc267e9ebc4cf554aba51fce1455f3d2b78457f2c1d281cee9b1ff85de8148390d014d860ae5cefb63f8eda999e763b730f5244fb689449ab7ddd31ededb2678f837a3765566c9c734e8d6c0f363e2e05bf21f701178a136f1d1029d9ace7ef7fe1e110bf80fcddb7bea78d85ffcca1e9cac9a49b5024560047b64100be57c6bc92a8f4a8a63c856e29975ad8b38da8157e44037c05d9e704e2419987637e8c2269cb6036fcf3c5036d4c92f9b81ee1d593a31cd1dc035665816c18f15a06d5e906bcbe3fd66e56eb89a39080a7d59a08a28a2d848c01f9833e5e7117e510ca9f85fb826cc9b76898cf31245357f5e97c23f5e6c5c99aa287e8355b38f169d62f4371b754466a225bba2b46b39efef0b7f70b606649ca58786537a420e5f828d291f45cae97dc540e944239c2853595925b652993278706e037261c1741e1f3ffce57cbff8246f0a9770172b00ce7fb352c9d81f65500c2bb80332b0bd4dad240f2ba77fb9bb0dadc2c7f59dfcee367e6eab3e79cde0b78e01a5c4856ac1cf0c1fcaf4bb74f3f652ad2bffcb924323b48ab251db341f10f002e3457e8f47a97411f6badf0aea3583ceb2d15c50fab25fa3211bf9e4de8da08f7c034e4f82a411e1aeeb11475b6804e260a8b7c4e22e07285cbdb97fd4d657283e100602ff1873bfe462205c92e0972fe1452e02c647853b568586ceb23f5424c8400be95070c02c48dd74d9d656c2c745c06bd069c3913b34c50ea13658179da02c492cf96ba13082a851ae80b5b2381f9051a10b43ef34a135b4ce79ffe6e355bf1118fede853d0e852921c0b1a3f13f0f4ca7e6485681c9f5ec91359d50d52237ba233e3351c981423c8b557667998f4226d6d746b8e50d82862e2fdeb75f1d57688162a35869453fd14abc4d1097c162e619f05f2db40"
 }
 '''
 
@@ -222,14 +255,23 @@ date_tap_zhlh = '''
 {
 "tenant":"5f59e971af7fa46ce33835ca",
 "orgAccount":"5f963cf2af7fa46ce3383721",
-"encodeData":"006981a9ce4b2b8d159ca4e80a4655b8aa8bb65db2e4fc7237db39c9c6e968c9322e276b3eeebb2c760aa6a93bd5f2b3dd7c74ecb83317834b4b6ea3f9f3bc51ea01106382930d8cb4f9318a49a7ba684ccd6770003e87441bd34aae6da1b11aa5cc3c0da85efa916f9859b6d0c270011eebfecaeec80ec8a87a4cd3c10a48216d522126ccb166f23dafff1eb453ca688c468052705354dca89124f876e7befed3ce55b9131c6d2f94083c2d092bc92b80178e4bafc26327c2d77a5db1fb3e8e5aa36baa61cdbc67ef3dd0b6142312f8bb9bc513c77630d1d2f74083b63edcf21f44cae8080e4efaa109b739e4041f5119f26aa7cee71b19af5ffb0aa7ab499baa20e9ff030c05c1ea1a617fe5f323e3d2c86fb17e44d2e853a838efc9fd6350a6013de0e03302685084fa159406cc4789d9335607d6d3fc862e39c06a396c88e6e21039fbb8fcfd96349fe73b38d549cad66810d655fa9acc25b335c952f3e2e8a7c085b6524869fb5275dd6eab8611efb0db730addf8dd054307957577321a2c59cf4a359fc4f408eb6d2a23a095531d8fc94bc372c3072ff9ab3790d4a723cd6e4104d916ea305b7752940a76c230156566566de33cfa3701cfdff0bc31fe1c37332f7b360f484f9b1a593b2c9eeef03904c7c2853e91eb49e1463fac704c490900bb1871644a8d7949c4253b3f12bb5a59650d927a5e713dae4670ee50a22f10b223b44d652908a42a41d0af542bf78aaf6d9331d3ad557fe3a9b2cdeac5f7accbf877fe85e6e76c16ce8a50f83c6188d6dbbb1022e5ea7c48d0de422c20b250c160a418edc8f09c1e87a971bde7ca5c81c1474efe94b78355e56ad74a759b0c8912d4c34370e506dcb7e0bfc6fe18dab7f0eeef6287d1795dcbd3b14f7dfbc0c03bb9ac64e73dfd01fe79d437d98b3895b9b87230cb994d58e563500bc733178b5fc5921718942e8eb851de3e0329f78ca5589c03b33d678e011c298f3b929aa54b064d733ed0ef353c167472f3f901db3a18aae5550c9f8d80ab747c525d5041a661e74efcb1d95ee05d684e7a1c19f7dfb865649be60960940ac634246b8de0863c7103f18ad09476af28f16e77fe546550a363db67c5e4386aaee8cb1ee0e4dbc3bc74ee89fa8e1141b118f4e408c06ba712843bf8fe1db4231e3d17f4e62072ce002cd410586732123496674225b7985d17a32cb1a9f3aee2ac8162f110e02b8a1bf808706c1d5285703243fc579b17a744fedcb3ab63e21f4a5a3c"
+"encodeData":"229d9aa5e74a20e010674839a598ab32c77f7bfa0f50b1176842243afd50314fdd40d72fce7b747ebaf5779789449f88b064e373b0137abedc590377f4b329c0c9bceb6299f944058ddc21ba86336bacf6dc1fa743279b543f3fec36e1761e97af0c762ba48e084720bd5ebf99b23b116c9918b3f6f75cc2dc0ddef40fbd01c3dc2fb10752e85b343bc23c87e90a6ccca1f0088effc27d040a2ae0ae4748fa3325cb701b0b1963d17cc8f0a5ded87effae0f23e55a4cc12b49302664cc758a31a9fbf01665720c6aedb9989873bfd97ca6fe64a1aa479ded6180210d94bbbada00d72a9c44445df7f42c5ca7be0975643fed1b3ae308ca9df3170049de823fe493d925a006b6eea90b4d5135d48d9f99f530681f2a592d93e0c1d7ad7907c82fa0c2119516d48fa2de676ff361b6a99655c004ab9b729a9d6cd97113dbcf1c3619bc09ae6339ec6dc67dfe222984fcd894b0b9c43252be3d9ad7cf14c5366bfeea2c20af7e0e8f8ff235ca517a2c62580da4e2b92af8fb50f455fcbde7422044d5971f3da2400c0e3dd68b0fc79b274b3b8d45b9033463e9c65bae0505cb6d24"
 }
 '''
-def tap_update_new():
+def tap_update_old():
   request = 'https://dzh-tx-test.ikandy.cn/api/external/report/update'
   Content_Type =  'application/json' #; charset=utf-8'
   newReport_headers={'Content-Type':Content_Type}#,"user-agent":User_Agent}
   #datae = data.encode(encoding='UTF8')
   r=requests.post(url = request,data=date_tap,headers= newReport_headers,verify=False)
   print(r.text)
-tap_update_new()
+def tap_update_new():
+  request = 'https://claim.cloud-ins.cn/api/external/report/update'
+  Content_Type =  'application/json' #; charset=utf-8'
+  newReport_headers={'Content-Type':Content_Type}#,"user-agent":User_Agent}
+  #datae = data.encode(encoding='UTF8')
+  r=requests.post(url = request,data=date_tap_zhlh,headers= newReport_headers,verify=False)
+  print(r.text)
+#tap_update()
+tap_update_old()
+#tap_update_new()

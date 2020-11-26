@@ -3,6 +3,7 @@ import requests,json,time,datetime,traceback,os,openpyxl,traceback,re,ast,diffli
 
 def gxrb_yds_test():
     '''广西人保账号获取信息'''
+    print('广西人保账号获取信息')
     multi_tokens2 = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbk5hbWUiOiJ5emMiLCJwYXNzd29yZCI6IjEyMzQ1NiIsImlhdCI6MTU5OTAxNjE1MCwiZXhwIjoxNTk5MTAyNTUwfQ.eFbeLIF8kKrsp7CeCzDsad0ahMWR6EoPGi3QZquzxHM'
     multi_cookie2 = r'_ga=GA1.2.841391502.1594783400; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%221738e63e67311-08d580513c2524-67e1b3f-1049088-1738e63e674609%22%2C%22%24device_id%22%3A%221738e63e67311-08d580513c2524-67e1b3f-1049088-1738e63e674609%22%2C%22props%22%3A%7B%22%24latest_referrer%22%3A%22%22%2C%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%7D%7D'
     User_Agent =  r'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36'
@@ -10,9 +11,9 @@ def gxrb_yds_test():
     gxrb_url = 'https://gxrb-yds-test.ikandy.cn/api/agents/869000213@gxrb-test.txtechnology.com.cn'
     '''广西人保获取核心系统APP账号'''
     r = requests.get(url=gxrb_url,headers= newReport_headers2,verify=False)
-    print(type(r))
+    #print(r.text)
+    print('-------------------------------------------------------------------')
     datatext = json.loads(r.text)
-    #print(datatext)
     with open('njrb.txt','ab+') as f:
         #new_text = '+'.join([datatext['result']['thirdAppAccount'],datatext['result']['thirdAppAccountPass']])
         new_text = '\nAPP账号：%s\nAPP密码：%s\nid：%s\nsim卡id：%s\n时间戳：\n'%(datatext['result']['thirdAppAccount'],datatext['result']['thirdAppAccountPass'],datatext['result']['thirdAccountImeiNo'],datatext['result']['thirdAccountSimNo'])
